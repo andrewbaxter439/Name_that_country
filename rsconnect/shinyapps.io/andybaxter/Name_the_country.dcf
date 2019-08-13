@@ -1,0 +1,13 @@
+name: Name_the_country
+title: Name_the_country
+username:
+account: andybaxter
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1084713
+bundleId: 2316763
+url: https://andybaxter.shinyapps.io/Name_the_country/
+when: 1565736685.75123
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: earth_data.csv|mapping.R

@@ -1,23 +1,24 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-# library(rnaturalearth)
-# library(broom)
+library(rnaturalearth)
+library(broom)
 library(stringr)
 library(gtools)
+library(maps)
+library(mapproj)
 
 server <- function(input, output) {
   
   
   # setup dataset ----------------------------------------------------------------------------------------------
   
-  # earth <- ne_countries()
-  # 
-  # tidyearth <- suppressWarnings(tidy(earth))
-  # countries <- tibble(id=row.names(earth@data),country=earth$name)
-  # 
-  # earth_n <- left_join(tidyearth, countries, by = "id")
-  earth_n <- read.csv("earth_data.csv", stringsAsFactors = FALSE)
+  earth <- ne_countries()
+
+  tidyearth <- suppressWarnings(tidy(earth))
+  countries <- tibble(id=row.names(earth@data),country=earth$name)
+
+  earth_n <- left_join(tidyearth, countries, by = "id")
   
 
 # reactive elements ------------------------------------------------------------------------------------------
@@ -97,9 +98,10 @@ server <- function(input, output) {
       geom_polygon(fill = "green", col = "white") +
       geom_polygon(data = highlight(), fill = "purple") +
       theme_void() +
-      coord_map(projection = "orthographic", orientation = c(focus(), 0),
-                xlim = c(focus()[2]-45, focus()[2]+45),
-                ylim = c(focus()[1]-45, focus()[1]+45)
-                )
+      coord_map(projection = "orthographic",
+      orientation = c(focus(), 0),
+      xlim = c(focus()[2]-45, focus()[2]+45),
+      ylim = c(focus()[1]-45, focus()[1]+45)
+      )
   })
 }
