@@ -1,8 +1,8 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(rnaturalearth)
-library(broom)
+# library(rnaturalearth)
+# library(broom)
 library(stringr)
 library(gtools)
 
@@ -11,16 +11,14 @@ server <- function(input, output) {
   
   # setup dataset ----------------------------------------------------------------------------------------------
   
-  earth <- ne_countries()
+  # earth <- ne_countries()
+  # 
+  # tidyearth <- suppressWarnings(tidy(earth))
+  # countries <- tibble(id=row.names(earth@data),country=earth$name)
+  # 
+  # earth_n <- left_join(tidyearth, countries, by = "id")
+  earth_n <- read.csv("earth_data.csv", stringsAsFactors = FALSE)
   
-  tidyearth <- tidy(earth)
-  countries <- tibble(id=row.names(earth@data),country=earth$name)
-  
-  earth_n <- left_join(tidyearth, countries, by = "id")
-  
-  # n <- as.character(sample(0:177, 1))
-  
-  # i <- 1
 
 # reactive elements ------------------------------------------------------------------------------------------
 

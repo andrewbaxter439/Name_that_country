@@ -2,6 +2,10 @@ library(ggplot2)
 library(dplyr)
 library(rnaturalearth)
 library(broom)
+library(maps)
+library(XLConnect)
+
+?borders
 
 
 # setup dataset ----------------------------------------------------------------------------------------------
@@ -12,6 +16,8 @@ tidyearth <- tidy(earth)
 countries <- tibble(id=row.names(earth@data),country=earth$name)
 
 earth_n <- left_join(tidyearth, countries, by = "id")
+readr::write_csv(earth_n, "earth_data.csv")
+
 
 
 # map --------------------------------------------------------------------------------------------------------
