@@ -19,6 +19,7 @@ ui <- fluidPage(
     });
   '),
   # Application title
+  br(),
   column(4, offset = 4, align = "center", titlePanel("Name that country!")),
 
   # Sidebar with a slider input for number of bins 
